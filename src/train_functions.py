@@ -114,6 +114,8 @@ def valid_fn(valid_loader, model, criterion, device, cfg):
 
     predictions = np.concatenate(preds)
 
+    logger.info(f"Predictions shape: {predictions.shape}")
+
     return losses.avg, predictions
 
 

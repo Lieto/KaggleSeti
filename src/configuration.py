@@ -8,7 +8,7 @@ class CFG:
     debug = False
     print_freq = 100
     num_workers = 4
-    model_name = "nfnet_l0a"
+    model_name = "nfnet_l0"
     size = 224
     scheduler = "CosineAnnealingLR"
     epochs = 6
