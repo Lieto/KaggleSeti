@@ -9,7 +9,7 @@ class CustomModel(nn.Module):
 
         super().__init__()
         self.cfg = cfg
-        #logger.info(f"Available model: {timm.models.list_models()}")
+        logger.info(f"Available model: {timm.models.list_models()}")
         self.model = timm.create_model(self.cfg.model_name, pretrained=pretrained, in_chans=1)
         self.n_features = self.model.head.fc.in_features
         self.model.head.fc = nn.Linear(self.n_features, self.cfg.target_size)

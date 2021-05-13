@@ -25,7 +25,10 @@ def train_loop(folds: pd.DataFrame, fold, cfg: CFG):
 
     train_folds = folds.loc[trn_idx].reset_index(drop=True)
     valid_folds = folds.loc[val_idx].reset_index(drop=True)
+
+    logger.info(f"valid folds shape: {valid_folds.shape}")
     valid_labels = valid_folds[cfg.target_col].values
+    logger.info(f"valid labels shape: {valid_labels.shape}")
 
     train_dataset = TrainDataset(cfg=cfg, transform=get_transforms(data="train", cfg=cfg))
     valid_dataset = TrainDataset(cfg=cfg, transform=get_transforms(data="valid", cfg=cfg))

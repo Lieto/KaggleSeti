@@ -31,7 +31,7 @@ def main():
 
     cfg.cv_split()
 
-    model = CustomModel(cfg, pretrained=False)
+    model = CustomModel(cfg, pretrained=True)
 
     if cfg.train:
 
@@ -45,7 +45,7 @@ def main():
                 get_result(_oof_df)
 
         logger.info(f"================== CV ==========================")
-        get_result(oof_df)
+        get_result(oof_df, cfg)
 
         oof_df.to_csv("data/output/" + "oof_df.csv", index=False)
 
