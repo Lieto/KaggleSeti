@@ -23,7 +23,7 @@ def main(args):
 
     data_dir = args.data_dir
 
-    train_df_example, test_df_example = load_data()
+    train_df_example, test_df_example = load_data(data_dir)
 
     cfg = CFG(train_df=train_df_example, debug=False)
 
