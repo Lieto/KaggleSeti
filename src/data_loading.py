@@ -5,14 +5,14 @@ import matplotlib.pyplot as plt
 from loguru import logger
 
 
-def get_train_file_path(image_id: str) -> str:
+def get_train_file_path(data_dir, image_id: str) -> str:
 
-    return "data/input/seti-breakthrough-listen/train/{}/{}.npy".format(image_id[0], image_id)
+    return data_dir + "/train/{}/{}.npy".format(image_id[0], image_id)
 
 
-def get_test_file_path(image_id) -> str:
+def get_test_file_path(data_dir, image_id) -> str:
 
-    return "data/input/seti-breakthrough-listen/test/{}/{}.npy".format(image_id[0], image_id)
+    return data_dir + "/test/{}/{}.npy".format(image_id[0], image_id)
 
 
 def quick_eda(train: pd.DataFrame) -> None:
@@ -37,10 +37,10 @@ def quick_eda(train: pd.DataFrame) -> None:
     plt.close()
 
 
-def load_data():
+def load_data(data_dir):
 
-    train: pd.DataFrame = pd.read_csv("data/train_labels.csv")
-    test: pd.DataFrame = pd.read_csv("data/sample_submission.csv")
+    train: pd.DataFrame = pd.read_csv(data_dir + "/train_labels.csv")
+    test: pd.DataFrame = pd.read_csv(data_dir + "/sample_submission.csv")
 
     train["file_path"] = train["id"].apply(get_train_file_path)
     test["file_path"] = test["id"].apply(get_test_file_path)

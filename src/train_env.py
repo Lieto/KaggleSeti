@@ -9,6 +9,7 @@ from utils import seed_torch
 from train import train_loop
 from utils import get_score
 
+import argparse
 
 def get_result(result_df, cfg):
 
@@ -18,7 +19,9 @@ def get_result(result_df, cfg):
     logger.info(f"Score: {score:<.4f}")
 
 
-def main():
+def main(args):
+
+    data_dir = args.data_dir
 
     train_df_example, test_df_example = load_data()
 
@@ -52,4 +55,9 @@ def main():
 
 if __name__ == "__main__":
 
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--data_dir", type=str, default="")
+
+    args = parser.parse_args()
+
+    main(args)
